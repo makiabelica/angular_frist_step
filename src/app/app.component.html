@@ -1,11 +1,48 @@
-<h1>Hols UFG 👋</h1>
-<h1>Hola {{titleUFG}}</h1>
+<div class="example-container">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon *ngIf="!sidenav.opened">menu_open</mat-icon>
+            <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+        </button>
 
+        <h1 class="example-app-name">FACTURACIÓN</h1>
 
-<app-compa></app-compa>
-<app-hala-madrid></app-hala-madrid>
-<app-programacion></app-programacion>
+        <span class="example-spacer"></span>
 
-<app-calculadora [tituloARecbir]="tituloAEnviar" (mensaje)="obtenerMensajeHijo($event)"></app-calculadora>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
 
-<h1>{{mensajeHijo}}</h1>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/account">
+                <mat-icon>account_box</mat-icon>
+                <span>My account</span>
+            </button>
+            <button mat-menu-item (click)="sidenav.opened = false">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" style="height: 100vh;">
+        <mat-sidenav #sidenav style="width: 200px; background-color: white;" mode="over">
+            <img src="assets/logo.png" alt="foto-gavidiana" width="128" style="margin-left: 20px" routerLink="/"
+                (click)="sidenav.toggle()">
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="pages/practica1" style="cursor: pointer">
+                <mat-icon>insert_drive_file</mat-icon>
+                <span>Practica 1</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="pages/practica2" style="cursor: pointer">
+                <mat-icon>insert_drive_file</mat-icon>
+                <span>Practica 2</span>
+            </button>
+            <mat-divider></mat-divider>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

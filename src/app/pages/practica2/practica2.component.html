@@ -1,0 +1,5 @@
+<h1>Practica II - Envio de datos entre componentes 🐧</h1>
+
+<app-calculadora2 [tituloARecibir]="tituloAEnviar" (dataChanged)="receiveDataFromChild($event)"></app-calculadora2>
+
+<h1>{{ mensajeARecivir }}</h1>

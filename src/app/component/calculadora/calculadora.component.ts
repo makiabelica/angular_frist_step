@@ -5,13 +5,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './calculadora.component.html',
   styleUrls: ['./calculadora.component.css']
 })
-export class CalculadoraComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
+export class CalculadoraComponent {
   num1: number = 0
   num2: number = 0
   resultado: number = 0
@@ -33,8 +27,4 @@ export class CalculadoraComponent implements OnInit {
 
   @Output() mensaje = new EventEmitter<string>()
 
-  enviarMensajePadre() {
-    const mensaje = 'Envio texto desde el hijo'
-    this.mensaje.emit(mensaje)
-  }
 }
